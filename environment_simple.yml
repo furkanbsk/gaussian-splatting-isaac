@@ -1,0 +1,6 @@
+name: gaussian_splatting
+channels:
+  - defaults
+dependencies:
+  - python=3.7.13
+  - pip
