@@ -50,7 +50,46 @@ This document records the issues encountered during the setup and training of th
 **Issue**: `ModuleNotFoundError: No module named 'zmq'` when enabling `omni.gsplat.viewport`.
 **Solution**:
 *   The Isaac Sim python environment is missing `pyzmq`.
-*   Fix: Run `/home/nvidia/isaacsim/python.sh -m pip install pyzmq`.
+*   Fix: Install pyzmq using Isaac Sim's Python interpreter:
+    ```bash
+    <ISAAC_SIM_PATH>/python.sh -m pip install pyzmq
+    ```
+
+**Finding your Isaac Sim installation path**:
+
+**Method 1: Omniverse Launcher Install** (most common)
+```bash
+# List all Isaac Sim versions
+ls ~/.local/share/ov/pkg/ | grep isaac
+
+# Example output: isaac_sim-2023.1.0
+# Your path would be:
+~/.local/share/ov/pkg/isaac_sim-2023.1.0/python.sh -m pip install pyzmq
+```
+
+**Method 2: System Install**
+```bash
+# Check common system installation directories
+ls /opt/nvidia/isaacsim*/python.sh 2>/dev/null
+
+# If found, use:
+/opt/nvidia/isaacsim/python.sh -m pip install pyzmq
+```
+
+**Method 3: Search your system**
+```bash
+# Find Isaac Sim installation
+find ~ -name "python.sh" -path "*/isaac*sim*" 2>/dev/null
+
+# Or search in /opt
+sudo find /opt -name "python.sh" -path "*/isaac*sim*" 2>/dev/null
+```
+
+**Method 4: Check running processes** (if Isaac Sim is currently open)
+```bash
+ps aux | grep isaac
+# Look for the installation path in the output
+```
 
 **Issue**: Viewport is "Blinking" or showing a flashing blank screen.
 **Cause**: The extension is in "Idle" mode and waiting for an anchor object.
@@ -60,10 +99,18 @@ This document records the issues encountered during the setup and training of th
 3.  Click the **"S"** button in the 3DGS Viewport window to link it.
 
 **Issue**: "Permission Denied" when running `run_renderer.sh` (chmod error).
-**Cause**: The socket folder `/tmp/omni-3dgs-extension` was owned by root from a previous run.
+**Cause**: The socket folder (default: `/tmp/omni-3dgs-extension`) was owned by root from a previous run.
 **Solution**:
-*   Detailed in `isaac_sim_visualization.md`.
-*   Fix: `sudo chown -R $USER:$USER /tmp/omni-3dgs-extension`.
+*   Fix ownership:
+    ```bash
+    sudo chown -R $USER:$USER /tmp/omni-3dgs-extension
+    ```
+*   **Alternative**: Change the socket directory in `.gsconfig`:
+    ```bash
+    # Use a directory in your home folder instead
+    GS_SOCKET_DIR="$HOME/.omni-3dgs-socket"
+    ```
+    This avoids permission issues entirely.
 
 **Issue**: "FileNotFoundError" in renderer logs.
 **Cause**:

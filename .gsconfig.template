@@ -1,0 +1,69 @@
+# Gaussian Splatting Configuration Template
+# Copy this file to .gsconfig and customize for your environment
+# .gsconfig is git-ignored and will not be committed
+
+# =============================================================================
+# Python Interpreter Configuration
+# =============================================================================
+
+# Python interpreter override (optional)
+# If not set, scripts will auto-detect based on activated environment
+# Uncomment and set to your specific Python path if needed
+# GS_PYTHON="/home/username/miniconda3/envs/gs_env/bin/python"
+# GS_PYTHON="/usr/bin/python3"
+
+# Conda environment name (default: gs_env)
+# Uncomment to use a different conda environment name
+# GS_CONDA_ENV="my_custom_env"
+
+# =============================================================================
+# Default Paths
+# =============================================================================
+
+# Default dataset directory (relative to repo root or absolute)
+# GS_DEFAULT_DATASET="my_room_hq_dataset"
+
+# Default output directory for trained models
+# GS_DEFAULT_OUTPUT="output"
+
+# =============================================================================
+# Docker Configuration (for Isaac Sim extension)
+# =============================================================================
+
+# Docker container name for VanillaGS renderer
+# DOCKER_CONTAINER_NAME="vanillags-renderer"
+
+# Docker model mount path inside container
+# DOCKER_MODEL_MOUNT="/workspace/data"
+
+# Socket directory for renderer communication
+# GS_SOCKET_DIR="/tmp/omni-3dgs-extension"
+
+# =============================================================================
+# Advanced Options
+# =============================================================================
+
+# Training resolution scale (1=full, 2=half, 4=quarter, 8=eighth)
+# GS_DEFAULT_RESOLUTION="2"
+
+# Default training iterations
+# GS_DEFAULT_ITERATIONS="30000"
+
+# =============================================================================
+# Usage Examples:
+# =============================================================================
+#
+# 1. Override Python interpreter for a specific installation:
+#    GS_PYTHON="/opt/anaconda3/envs/gaussian_splatting/bin/python"
+#
+# 2. Use a custom conda environment:
+#    GS_CONDA_ENV="my_gs_env"
+#
+# 3. Set default paths for your workflow:
+#    GS_DEFAULT_DATASET="datasets/room1"
+#    GS_DEFAULT_OUTPUT="models/room1_output"
+#
+# 4. Configure Docker for Isaac Sim:
+#    DOCKER_CONTAINER_NAME="my-gs-renderer"
+#    DOCKER_MODEL_MOUNT="/mnt/models"
+#

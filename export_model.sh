@@ -1,6 +1,13 @@
 #!/bin/bash
 # Usage: ./export_model.sh <model_dir> <output_name>
 
+# Get script directory and source common functions
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPT_DIR/scripts/common.sh"
+
+# Load user configuration
+load_config
+
 MODEL_DIR=$1
 OUTPUT_NAME=$2
 
@@ -10,7 +17,7 @@ if [ -z "$MODEL_DIR" ]; then
 fi
 
 if [ -z "$OUTPUT_NAME" ]; then
-    OUTPUT_NAME="final_model.ply"
+    OUTPUT_NAME="${GS_EXPORT_NAME:-final_model.ply}"
 fi
 
 # Find the latest iteration
