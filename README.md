@@ -4,6 +4,36 @@ Bernhard Kerbl*, Georgios Kopanas*, Thomas Leimkühler, George Drettakis (* indi
 | [T&T+DB COLMAP (650MB)](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip) | [Pre-trained Models (14 GB)](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/pretrained/models.zip) | [Viewers for Windows (60MB)](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/binaries/viewers.zip) | [Evaluation Images (7 GB)](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/evaluation/images.zip) |<br>
 ![Teaser image](assets/teaser.png)
 
+## 🎬 Example Results
+
+This fork includes custom scripts and tools for training Gaussian Splatting models with Isaac Sim integration. Here are some example results from our workflow:
+
+### Real-time Visualization with SIBR Viewer
+
+<p align="center">
+  <img src="example_images/Screenshot from 2026-01-28 14-48-00.png" width="45%" />
+  <img src="example_images/Screenshot from 2026-01-28 14-50-56.png" width="45%" />
+</p>
+
+### Training Progress
+
+Watch the model optimize in real-time during training:
+
+<p align="center">
+  <img src="example_images/timelapse_optimization_overview.gif" width="48%" />
+  <img src="example_images/timelapse_optimization_real_wide.gif" width="48%" />
+</p>
+
+### Data Preprocessing with COLMAP
+
+<p align="center">
+  <img src="example_images/preprocess_colmap.gif" width="60%" />
+  <br>
+  <em>Automatic camera pose estimation and sparse reconstruction from video</em>
+</p>
+
+---
+
 This repository contains the official authors implementation associated with the paper "3D Gaussian Splatting for Real-Time Radiance Field Rendering", which can be found [here](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/). We further provide the reference images used to create the error metrics reported in the paper, as well as recently created, pre-trained models. 
 
 <a href="https://www.inria.fr/"><img height="100" src="assets/logo_inria.png"> </a>

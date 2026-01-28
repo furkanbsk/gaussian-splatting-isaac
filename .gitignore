@@ -9,3 +9,5 @@ screenshots
 
 # User-specific configuration
 .gsconfig
+# Example videos (too large for GitHub)
+example_images/*.mp4
